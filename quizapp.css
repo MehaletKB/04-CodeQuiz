@@ -1,0 +1,47 @@
+:root {
+    background-image: linear-gradient(85deg,  rgba(62,161,219,1) 11.2%, rgba(93,52,236,1) 100.2% );
+    --text-color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+* {
+    font-family: "Roboto", "Helvetica", "sans-serif";
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: var(--text-color);
+    font-size: 400%;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.container {
+    /* background-color: rgb(255, 255, 255, 0.3); */
+    width: 100vw;
+    height: 100vh;
+    /* margin: auto; */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+a {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 15px;
+    text-decoration: none;
+    color:var(--text-color);
+    font-size:150%;
+}
+
+a:hover {
+    font-weight:bold;
+}
+
+.hidden {
+    display: none;
+}
