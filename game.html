@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="quizapp.css">
     <link rel="stylesheet" href="quizgame.css">
-    <title>Code Quiz -Play</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Code Quiz-Play</title>
 
 </head>
 <body>
     <div class="container">
         <div id="play">
+            <div class="overhead">
+                <h3>Seconds Left: <span id='start-timer'></span>
+            
+                <h3>Score: <span id='score'></span></h3>
+                </div>
+            
             <h2 id="question">Question</h2>
             <div class="choice-container">
                 <p class="choice-text" data-choicenumber=1>1</p>
@@ -30,8 +38,13 @@
                 <p class="choice-text"
                 data-choicenumber=4>4</p>
             </div>
+
+            <div class="result"></div>
+
+
         </div>
     </div>
+
     
     <script src="./game.js"></script>
 </body>

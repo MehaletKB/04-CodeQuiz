@@ -1,11 +1,14 @@
 var question = document.querySelector('#question');
 var choices = Array.from(document.getElementsByClassName('choice-text'));
+var timer = document.querySelector('#start-timer')
+var score = document.querySelector('#score');
+
 
 var currentQuestion = {};
-var acceptingAnswers = true;
-var score = 0;
+// var acceptingAnswers = true;
 var questionCounter = 0;
 var correctAnswer = 10;
+var maxQuestions = 5;
 
 var allQuestionsAnswers = [
     {
@@ -54,43 +57,17 @@ var allQuestionsAnswers = [
     }
 ]; 
 
-// var questions = [
-//     {
-//     question: "Commonly used data types DO NOT include:",
-//     choices: ["strings", "booleans", "alerts", "numbers"],
-//     answer: "alerts"
-//     },
-
-//     {
-//     question: "The condition in an if / else statement is enclosed   within ____.",
-//     choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-//     answer: "parentheses"
-//     },
-
-//     {
-//     question: "Arrays in JavaScript can be used to store ____.",
-//     choices: ["numbers and strings","other arrays","booleans","all of the above" ],
-//     answer: "all of the above"
-//     },
-
-//     {
-//     question:"String values must be enclosed within ____ when being assigned to variables.",
-//     choices: ["commas", "curly brackets", "quotes", "parentheses"],
-//     answer: "quotes"
-//     },
-
-//     {
-//     question:"A very useful tool used during development and debugging for printing content to the debugger is:",
-//     choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
-//     answer: "console.log"
-//     }
-// ];
-
 startGame = function(){
     questionCounter = 0;
     score = 0;
     playQuestions = [...allQuestionsAnswers];
-    // console.log(playQuestions);
+    timeLeft = 60;
+    setInterval(function(){
+        if(timeLeft <= 0){
+            clearInterval(timeLeft = 0);
+        }
+        timer.innerText = timeLeft
+        timeLeft--},1000)
     getQuestion();
 }
 
@@ -101,8 +78,9 @@ getQuestion = function(){
     question.innerText = currentQuestion.question;
     // console.log(playQuestions);
 
-    if(playQuestions.length === 0 ){
-        return document.location.href('./endgame.html');
+    if(playQuestions.length === 0 || questionCounter > maxQuestions){
+        // localStorage.setItem('recentScore', score);
+        return window.location.assign('./endgame.html');
     }
     choices.forEach(function(choice) {
         var questionNumber = choice.dataset['choicenumber'];
@@ -117,18 +95,19 @@ getQuestion = function(){
 
 choices.forEach(function(choice) {
     choice.addEventListener('click', function(event){
-        if(!acceptingAnswers){
-            return;
-        }
-
-        acceptingAnswers = false;
+        
         var selectedChoice = event.target;
         var selectedAnswer = selectedChoice.innerText;
 
-        console.log(selectedAnswer===currentQuestion.answer);
-        
-        getQuestion();
+        // console.log(selectedAnswer===currentQuestion.answer)
 
+        // if(selectedAnswer===currentQuestion.answer){
+        //     $(".result").append("<p>Correct</p>").css('color', 'green').fadeOut('slow');
+        // }else{
+        //     $(".result").append("<p>Incorrect</p>").css('color', 'red').fadeOut('slow');
+        // }
+
+        getQuestion();
     });
 
 });
