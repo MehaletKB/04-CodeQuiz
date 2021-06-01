@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quizapp.css">
+
+    <title>Code Quiz-End</title>
+</head>
+<body>
+    <div class="end">
+        <h2>Congratulations!</h2>
+
+        <h3>Final Score: <span id="final-score"></span></h3>
+
+        <form>
+            <input type="text" 
+            name="username" 
+            id="username" placeholder="name"/>
+
+            <button 
+            type="submit" 
+            id="save-score"
+            onClick="saveScore(event)"
+            
+            >Save</button>
+        </form>
+
+        <a class="button-home" href = "./index.html"> Go Home</a>
+        
+    </div>
+    
+
+
+    <script src="./endgame.js"></script>
+</body>
+</html>

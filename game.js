@@ -6,7 +6,6 @@ var score = document.querySelector('#score');
 
 
 var currentQuestion = {};
-// var acceptingAnswers = true;
 var scoreCount = 0;
 var questionCounter = 0;
 
@@ -80,33 +79,35 @@ getQuestion = function(){
     currentQuestion = playQuestions[questionIndex];
     question.innerText = currentQuestion.question;
 
-    if(playQuestions.length === 0){
-        // localStorage.setItem('recentScore', score);
-        return window.location.assign('./endgame.html');
-    }
+    
     choices.forEach(function(choice) {
         var questionNumber = choice.dataset['choicenumber'];
         choice.innerText = currentQuestion['choice' + questionNumber];
     });
-
+    
     playQuestions.splice(questionIndex, 1);
+    
+    if(playQuestions.length === 0){
+        localStorage.setItem('mostRecentScore', scoreCount);
+        setTimeout(function(){
+            return window.location.assign('./endgame.html');
+        }, 1000)
 
-    acceptingAnswers = true;
-
+        getQuestion();
+    }
 }
 
 choices.forEach(function(choice){
     choice.addEventListener('click', function(event){
         
-        // acceptingAnswers = false;
         var selectedChoice = event.target;
         var selectedAnswer = selectedChoice.innerText;
-
+        
         // console.log(selectedAnswer===currentQuestion.answer)
-
+        
         // if(selectedAnswer===currentQuestion.answer){
-        //     $(".result").append("<p>Inorrect</p>").css('color', 'green').fadeOut('slow');
-        // }else{
+            //     $(".result").append("<p>Inorrect</p>").css('color', 'green').fadeOut('slow');
+            // }else{
         //     $(".result").append("<p>Correct</p>").css('color', 'red').fadeOut('slow');
         // }
 
@@ -118,10 +119,8 @@ choices.forEach(function(choice){
         if(classToApply === 'correct'){
             increaseScore();
         }
-
         if(classToApply === 'incorrect'){
             decreaseScore();
-
         }
         
         selectedChoice.parentElement.classList.add(classToApply)

@@ -7,8 +7,7 @@
 * {
     font-family: "Roboto", "Helvetica", "sans-serif";
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
 }
 
 h1 {
@@ -19,10 +18,8 @@ h1 {
 }
 
 .container {
-    /* background-color: rgb(255, 255, 255, 0.3); */
     width: 100vw;
     height: 100vh;
-    /* margin: auto; */
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -44,4 +41,24 @@ a:hover {
 
 .hidden {
     display: none;
+}
+
+.end {
+    color: var(--text-color);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding: px;
+}
+
+.end a {
+    font-size: 100%;
+    margin-top: 30px;
+}
+
+.end a:hover {
+    font-weight:bold;
 }
