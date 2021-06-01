@@ -40,3 +40,12 @@ h2 {
     margin-top: 40px;   
     font-weight: bold; 
 } */
+
+.correct {
+    background-color: rgb(50, 163, 50);
+}
+
+.incorrect {
+    background-color: rgb(211, 50, 50);
+
+}
