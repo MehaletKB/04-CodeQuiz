@@ -8,4 +8,4 @@ Created html files for each stage of the game, two css files to style the game, 
 
 Here's a link: https://mehaletkb.github.io/04-CodeQuiz/index.html
 
-![quizgame-gif](./assets/images/quizgame-gif.gif)
+![quizgame-gif](./assets/Images/quizgame-gif.gif)
