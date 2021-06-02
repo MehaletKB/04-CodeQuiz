@@ -23,3 +23,4 @@ saveScore = function(event){
     window.location.assign('./index.html');
 };
 
+// change and update
