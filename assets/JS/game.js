@@ -98,7 +98,7 @@ getQuestion = function(){
         localStorage.setItem('mostRecentScore', scoreCount);
         setTimeout(function(){
             return window.location.assign('./endgame.html');
-        }, 4000)
+        }, 1000)
 
         getQuestion();
     }
