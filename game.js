@@ -62,7 +62,7 @@ startGame = function(){
     scoreCount = 0;
     score.innerText=scoreCount;
     playQuestions = [...allQuestionsAnswers];
-    
+
     getQuestion();
 }
 
@@ -84,6 +84,8 @@ getQuestion = function(){
     currentQuestion = playQuestions[questionIndex];
     question.innerText = currentQuestion.question;
 
+    console.log(currentQuestion.question)
+
     
     choices.forEach(function(choice) {
         var questionNumber = choice.dataset['choicenumber'];
@@ -92,7 +94,7 @@ getQuestion = function(){
     
     playQuestions.splice(questionIndex, 1);
     
-    if(playQuestions.length <= 0){
+    if(playQuestions.length === 0){
         localStorage.setItem('mostRecentScore', scoreCount);
         setTimeout(function(){
             return window.location.assign('./endgame.html');
@@ -110,7 +112,7 @@ choices.forEach(function(choice){
 
 
         var classToApply = 'incorrect';
-        if(selectedAnswer===currentQuestion.answer){
+        if(selectedAnswer === currentQuestion.answer){
             classToApply = 'correct';
         }
         
