@@ -25,6 +25,10 @@ h1 {
     align-items: center;
 }
 
+p {
+  text-align: center;  
+}
+
 a {
     display: block;
     justify-content: center;

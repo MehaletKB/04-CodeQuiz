@@ -56,12 +56,18 @@ var allQuestionsAnswers = [
     }
 ]; 
 
+
 startGame = function(){
     questionCounter = 0;
     scoreCount = 0;
     score.innerText=scoreCount;
     playQuestions = [...allQuestionsAnswers];
-    timeLeft = 60;
+    
+    getQuestion();
+}
+
+timeLeft = 60;
+setTimer = function(){
     setInterval(function(){
         if(timeLeft <= 0){
             clearInterval(timeLeft = 0);
@@ -70,7 +76,6 @@ startGame = function(){
         }
         timer.innerText = timeLeft
         timeLeft--},1000)
-    getQuestion();
 }
 
 getQuestion = function(){
@@ -87,11 +92,11 @@ getQuestion = function(){
     
     playQuestions.splice(questionIndex, 1);
     
-    if(playQuestions.length === 0){
+    if(playQuestions.length <= 0){
         localStorage.setItem('mostRecentScore', scoreCount);
         setTimeout(function(){
             return window.location.assign('./endgame.html');
-        }, 1000)
+        }, 4000)
 
         getQuestion();
     }
@@ -102,14 +107,7 @@ choices.forEach(function(choice){
         
         var selectedChoice = event.target;
         var selectedAnswer = selectedChoice.innerText;
-        
-        // console.log(selectedAnswer===currentQuestion.answer)
-        
-        // if(selectedAnswer===currentQuestion.answer){
-            //     $(".result").append("<p>Inorrect</p>").css('color', 'green').fadeOut('slow');
-            // }else{
-        //     $(".result").append("<p>Correct</p>").css('color', 'red').fadeOut('slow');
-        // }
+
 
         var classToApply = 'incorrect';
         if(selectedAnswer===currentQuestion.answer){
@@ -120,7 +118,7 @@ choices.forEach(function(choice){
             increaseScore();
         }
         if(classToApply === 'incorrect'){
-            decreaseScore();
+            decreaseTime();
         }
         
         selectedChoice.parentElement.classList.add(classToApply)
@@ -140,12 +138,13 @@ increaseScore = function(){
     score.innerText = scoreCount;
 }
 
-decreaseScore = function(){
-    scoreCount -= 2;
-    score.innerText = scoreCount;
+decreaseTime = function(){
+    timeLeft -= 5;
+    timer.innerText = timeLeft
 }
 
 
 
 
 startGame();
+setTimer();
